@@ -5,7 +5,7 @@ skillMetadata:
         - name: tv
           type: text
           label: Standard TV (IP 1)
-          value:
+          value: 
           placeholder: localhost
         - name: port
           type: number
@@ -34,8 +34,6 @@ skillMetadata:
         - name: translations
           type: text
           label: Your words for left, right, up, down, enter and leave
-          value:
+          value: 
           placeholder: left, right, up, down, enter, leave
-
-
 
