@@ -11,7 +11,7 @@ LOGGER = getLogger(__name__)
 
 class MySamsungTvRc(MycroftSkill):
     def __init__(self):
-        super(MySamsungTvRc, self).__init__(name="SamsungTV")
+        super(MySamsungTvRc, self).__init__(name="MySamsungTV")
 
     def initialize(self):
         self.settings_change_callback = self.on_settings_changed
@@ -116,6 +116,11 @@ class MySamsungTvRc(MycroftSkill):
     @intent_handler('vol_down.intent')
     def handle_vol_down(self):
         keycode = "VOLDOWN"
+        self.send_keycode(keycode)
+
+    @intent_handler('exit.intent')
+    def handle_exit(self):
+        keycode = "EXIT"
         self.send_keycode(keycode)
 
 #dialog handlers
