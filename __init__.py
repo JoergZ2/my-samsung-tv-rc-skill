@@ -123,6 +123,11 @@ class MySamsungTvRc(MycroftSkill):
         keycode = "EXIT"
         self.send_keycode(keycode)
 
+    @intent_handler('poweroff.intent')
+    def handle_poweroff(self):
+        keycode = "POWEROFF"
+        self.send_keycode(keycode)
+
 #dialog handlers
     @intent_handler('channel_by_dialog.intent')
     def handle_channel_by_dialog(self, message):
