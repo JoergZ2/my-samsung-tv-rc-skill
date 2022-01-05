@@ -11,7 +11,7 @@ LOGGER = getLogger(__name__)
 
 class MySamsungTvRc(MycroftSkill):
     def __init__(self):
-        super(MySamsungTvRc, self).__init__(name="MySamsungTV")
+        super(MySamsungTvRc, self).__init__(name="SamsungTV")
 
     def initialize(self):
         self.settings_change_callback = self.on_settings_changed
@@ -127,21 +127,21 @@ class MySamsungTvRc(MycroftSkill):
         self.cursor_recursion(move)
 
     @intent_handler('program_guide_dialog.intent')
-    def handle_recording(self):
+    def handle_program_guide(self):
         keycode = "GUIDE"
         self.send_keycode(keycode)
         move = self.explain_cursor_moves()
         self.cursor_recursion(move)
 
     @intent_handler('source_dialog.intent')
-    def handle_recording(self):
+    def handle_source(self):
         keycode = "SOURCE"
         self.send_keycode(keycode)
         move = self.explain_cursor_moves()
         self.cursor_recursion(move)
 
     @intent_handler('smarthub_dialog.intent')
-    def handle_recording(self):
+    def handle_smarthub(self):
         keycode = "CONTENTS"
         self.send_keycode(keycode)
         move = self.explain_cursor_moves()
