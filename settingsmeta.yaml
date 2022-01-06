@@ -35,7 +35,7 @@ skillMetadata:
           type: text
           label: Your words for left, right, up, down, enter and leave
           value:
-          placeholder: left, right, up, down, enter, leave
+          placeholder: left,right,up,down,enter,leave
 
 
 

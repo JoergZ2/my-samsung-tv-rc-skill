@@ -18,7 +18,7 @@ class MySamsungTvRc(MycroftSkill):
         self.on_settings_changed()
         self.same_device = DeviceApi()
         info = self.same_device.get(); self.same_device = info['description'].lower()
-        self.trans = {"nach links": "LEFT", "nach rechts": "RIGHT", "nach oben": "UP", "nach unten": "DOWN", "nehmen": "ENTER", "verlassen": "EXIT"}
+        #self.trans = {"nach links": "LEFT", "nach rechts": "RIGHT", "nach oben": "UP", "nach unten": "DOWN", "nehmen": "ENTER", "verlassen": "EXIT"}
 
     def on_settings_changed(self):
         self.host = self.settings.get('tv')
@@ -70,6 +70,12 @@ class MySamsungTvRc(MycroftSkill):
         move = ""
         return move
 
+    def explain_cursor_moves_source(self):
+        '''Usage of cursor based selections'''
+        self.speak_dialog('cursor_moves_source')
+        move = ""
+        return move
+
     def cursor_recursion(self, move):
         '''Recursive function to handle cursor movements'''
         move = self.get_response('cursor_dummy', 0)
@@ -118,9 +124,14 @@ class MySamsungTvRc(MycroftSkill):
         keycode = "VOLDOWN"
         self.send_keycode(keycode)
 
-    @intent_handler('exit.intent')
-    def handle_exit(self):
+    @intent_handler('menu_leave.intent')
+    def handle_menu_leave(self):
         keycode = "EXIT"
+        self.send_keycode(keycode)
+
+    @intent_handler('info.intent')
+    def handle_info(self):
+        keycode = "INFO"
         self.send_keycode(keycode)
 
     @intent_handler('poweroff.intent')
@@ -147,12 +158,19 @@ class MySamsungTvRc(MycroftSkill):
     def handle_source(self):
         keycode = "SOURCE"
         self.send_keycode(keycode)
-        move = self.explain_cursor_moves()
+        move = self.explain_cursor_moves_source()
         self.cursor_recursion(move)
 
     @intent_handler('smarthub_dialog.intent')
     def handle_smarthub(self):
         keycode = "CONTENTS"
+        self.send_keycode(keycode)
+        move = self.explain_cursor_moves()
+        self.cursor_recursion(move)
+
+    @intent_handler('tools.intent')
+    def handle_tools(self):
+        keycode = "TOOLS"
         self.send_keycode(keycode)
         move = self.explain_cursor_moves()
         self.cursor_recursion(move)
