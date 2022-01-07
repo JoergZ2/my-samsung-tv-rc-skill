@@ -14,8 +14,8 @@ class MySamsungTvRc(MycroftSkill):
         super(MySamsungTvRc, self).__init__(name="MySamsungTV")
 
     def initialize(self):
-        self.settings_change_callback = self.on_settings_changed
-        self.on_settings_changed()
+        #self.settings_change_callback = self.on_settings_changed
+        #self.on_settings_changed()
         self.same_device = DeviceApi()
         info = self.same_device.get(); self.same_device = info['description'].lower()
         #self.trans = {"nach links": "LEFT", "nach rechts": "RIGHT", "nach oben": "UP", "nach unten": "DOWN", "nehmen": "ENTER", "verlassen": "EXIT"}
