@@ -19,6 +19,7 @@ for control, the python library samsungctl is required, which must be installed 
 * Name: (virtual) Name of voice RC
 * Description: Description (optional)
 * Your words for...: Localization of cursor control and confirming selection or escaping a menu
+
 Localization: Write the words without spaces after the comma, for example, in German: links,rechts,nach oben,nach unten,nehmen,verlassen. The spaces between 'nach' and 'oben' is ok. Today there is a localization for German only.
 
 ## Credits
