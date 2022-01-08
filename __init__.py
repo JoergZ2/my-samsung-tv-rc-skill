@@ -29,10 +29,10 @@ class MySamsungTvRc(MycroftSkill):
         self.description_rc = self.settings.get('description_rc')
         self.translations = self.settings.get('translations')
         self.trans = self.translations.split(',')
-        self.trans = {self.trans[0]: 'LEFT', self.trans[1]: 'RIGHT', \
+        self.curs_move_dict = {self.trans[0]: 'LEFT', self.trans[1]: 'RIGHT', \
             self.trans[2]: 'UP', self.trans[3]: 'DOWN', \
             self.trans[4]: 'ENTER', self.trans[5]: 'EXIT'}
-        LOGGER.info(self.host)
+        LOGGER.info(self.curs_move_dict)
 
         self.config = {"name": self.name_rc, "description": self.description_rc,\
             "id": "", "host": self.host, "port": self.port, "method": self.method,\
@@ -83,15 +83,15 @@ class MySamsungTvRc(MycroftSkill):
             keycode = "EXIT"
             self.send_keycode(keycode)
             return
-        if move == "nehmen":
+        if move == self.trans[4]:
             keycode = "ENTER"
             self.send_keycode(keycode)
             return
-        if move == "verlassen":
+        if move == self.trans[5]:
             keycode = "EXIT"
             self.send_keycode(keycode)
             return
-        keycode = self.trans[move]
+        keycode = self.curs_move_dict[move]
         self.send_keycode(keycode)
         move = ""
         self.cursor_recursion(move)
