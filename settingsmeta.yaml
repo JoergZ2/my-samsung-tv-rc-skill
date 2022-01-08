@@ -18,17 +18,18 @@ skillMetadata:
           value: Stube
           placeholder: room1
         - name: method
-          type: text
-          label: Method
+          type: select
+          label: Choose method legacy or websocket
+          options: legacy (default)|legacy; websocket|websocket
           value: legacy
           placeholder: legacy
-        - name: tvname
+        - name: rc_name
           type: text
-          label: Name
+          label: Name of RC
           value: Mycroft
-        - name: description
+        - name: description_rc
           type: text
-          label: Description
+          label: Description of RC
           value: Description
           placeholder: Description
         - name: translations

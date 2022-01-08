@@ -14,8 +14,8 @@ class MySamsungTvRc(MycroftSkill):
         super(MySamsungTvRc, self).__init__(name="MySamsungTV")
 
     def initialize(self):
-        #self.settings_change_callback = self.on_settings_changed
-        #self.on_settings_changed()
+        self.settings_change_callback = self.on_settings_changed
+        self.on_settings_changed()
         self.same_device = DeviceApi()
         info = self.same_device.get(); self.same_device = info['description'].lower()
         #self.trans = {"nach links": "LEFT", "nach rechts": "RIGHT", "nach oben": "UP", "nach unten": "DOWN", "nehmen": "ENTER", "verlassen": "EXIT"}
@@ -24,9 +24,9 @@ class MySamsungTvRc(MycroftSkill):
         self.host = self.settings.get('tv')
         self.port = self.settings.get('port')
         self.placement = self.settings.get('placement')
-        self.name = self.settings.get('tvname')
+        self.name_rc = self.settings.get('rc_name')
         self.method = self.settings.get('method')
-        self.description = self.settings.get('description')
+        self.description_rc = self.settings.get('description_rc')
         self.translations = self.settings.get('translations')
         self.trans = self.translations.split(',')
         self.trans = {self.trans[0]: 'LEFT', self.trans[1]: 'RIGHT', \
@@ -34,7 +34,7 @@ class MySamsungTvRc(MycroftSkill):
             self.trans[4]: 'ENTER', self.trans[5]: 'EXIT'}
         LOGGER.info(self.host)
 
-        self.config = {"name": self.name, "description": self.description,\
+        self.config = {"name": self.name_rc, "description": self.description_rc,\
             "id": "", "host": self.host, "port": self.port, "method": self.method,\
             "timeout": 0}
 
