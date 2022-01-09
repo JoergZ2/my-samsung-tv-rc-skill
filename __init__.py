@@ -152,7 +152,7 @@ class MySamsungTvRc(MycroftSkill):
     def handle_program_guide(self):
         keycode = "GUIDE"
         self.send_keycode(keycode)
-        move = self.explain_cursor_moves()
+        move = self.explain_cursor_moves(self.translations)
         self.cursor_recursion(move)
 
     @intent_handler('source_dialog.intent')
