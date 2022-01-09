@@ -32,7 +32,7 @@ class MySamsungTvRc(MycroftSkill):
         self.curs_move_dict = {self.trans[0]: 'LEFT', self.trans[1]: 'RIGHT', \
             self.trans[2]: 'UP', self.trans[3]: 'DOWN', \
             self.trans[4]: 'ENTER', self.trans[5]: 'EXIT'}
-        LOGGER.info(self.curs_move_dict)
+        #LOGGER.info(self.curs_move_dict)
 
         self.config = {"name": self.name_rc, "description": self.description_rc,\
             "id": "", "host": self.host, "port": self.port, "method": self.method,\
@@ -64,9 +64,10 @@ class MySamsungTvRc(MycroftSkill):
         else:
             self.send_keycode(pos)
 
-    def explain_cursor_moves(self):
+    def explain_cursor_moves(self, translations):
         '''Usage of cursor based selections'''
         self.speak_dialog('cursor_moves')
+        self.speak(translations)
         move = ""
         return move
 
@@ -144,7 +145,7 @@ class MySamsungTvRc(MycroftSkill):
     def handle_channel_by_dialog(self, message):
         keycode = "CH_LIST"
         self.send_keycode(keycode)
-        move = self.explain_cursor_moves()
+        move = self.explain_cursor_moves(self.translations)
         self.cursor_recursion(move)
 
     @intent_handler('program_guide_dialog.intent')
