@@ -2,7 +2,7 @@
 A skill for remote control some samsung tvs by mycroft
 
 ## About
-My samsung tv skill is developed and tested with the ue55es6760 model. whether the skill works with other tvs needs to be tried.
+My samsung tv Mycroft.ai skill is developed and tested with the ue55es6760 model. whether the skill works with other tvs needs to be tried.
 
 for control, the python library samsungctl is required, which must be installed in the virtual environment of mycroft e.g.:
 
