@@ -198,23 +198,23 @@ class MySamsungTvRc(MycroftSkill):
         self.send_keycode(keycode)
 
     @intent_handler('rewind.intent')
-    def handle_recording(self):
+    def handle_rewind(self):
         keycode = "REWIND"
         self.send_keycode(keycode)
 
     @intent_handler('fastforward.intent')
-    def handle_recording(self):
+    def handle_fastforward(self):
         keycode = "FF"
         self.send_keycode(keycode)
 
 #source handlers
     @intent_handler('hdmi.intent')
-    def handle_recording(self):
+    def handle_hdmi(self):
         keycode = "HDMI"
         self.send_keycode(keycode)
 
     @intent_handler('dtv.intent')
-    def handle_recording(self):
+    def handle_dtv(self):
         keycode = "DTV"
         self.send_keycode(keycode)
 
